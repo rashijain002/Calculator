@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import StartScreen from './src/StartScreen';
+import HomeScreen from './src/HomeScreen';
 
 export default function App() {
+  const[isLoaded,setIsLoaded]=useState(false);
+  setTimeout(()=>{
+    setIsLoaded(true)
+  },2000);
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      {isLoaded?<HomeScreen/>:<StartScreen/>}
       <StatusBar style="auto" />
     </View>
   );
